@@ -34,7 +34,6 @@ export default function Home() {
           <RichTextEditor text={editorText} onTextChange={setEditorText} />
           <ScrapbookPanel editorText={editorText} setEditorText={setEditorText} />
         </div>
-
         <TemplateSection />
       </main>
     </>

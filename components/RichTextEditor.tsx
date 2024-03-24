@@ -1,10 +1,9 @@
 import dynamic from 'next/dynamic';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import 'react-quill/dist/quill.snow.css';
-
+import Quill, { RangeStatic } from 'quill';
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
 
 interface RichTextEditorProps {
   text: string;
@@ -12,36 +11,28 @@ interface RichTextEditorProps {
 }
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ text, onTextChange }) => {
-
-  useEffect(() => {
-    const editor = document.querySelector('.ql-editor');
-
-    const handleTabKeyPress = (event: KeyboardEvent) => {
-      if (
-        event.shiftKey &&
-        event.code === 'BracketRight' && // Code for "]"
-        window.getSelection()?.toString() !== ''
-      ) {
-        event.preventDefault();
-
-        // Show tooltip at cursor position
-        // You can replace this with your tooltip logic
-        console.log('Tooltip should appear now');
-      }
-    };
-
-    editor?.addEventListener('keydown', handleTabKeyPress as EventListener);
-    return () => {
-      editor?.removeEventListener('keydown', handleTabKeyPress as EventListener);
-    };
-  }, []);
-
-
   const handleChange = (content: string) => {
     onTextChange(content);
   };
 
-  return <ReactQuill value={text} onChange={handleChange} />;
+  const handleChangeSelection = (selectionInfo : any) => {
+    // if (selection) {
+    //   const selectedText = quillRef.current?.getSelection()?.index !== undefined ?
+    //     quillRef.current.getText(selection.index, selection.length) :
+    //     '';
+    //   console.log(quillRef.current?.getSelection());
+    console.log(selectionInfo)
+  };
+
+  const quillRef = React.useRef<Quill>();
+  
+  return (
+    <ReactQuill 
+      value={text} 
+      onChange={handleChange} 
+      onChangeSelection={handleChangeSelection}
+    />
+  );
 };
 
 export default RichTextEditor;

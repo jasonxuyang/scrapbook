@@ -18,16 +18,9 @@ const ScrapbookPanel: React.FC<ScrapbookPanelProps> = ({ editorText, setEditorTe
     // console.log("Inserted text:", editorText);
   };
 
-  const generateText = () => {
-    // Update the state to insert text into the editor
-    // setEditorText("change text to this");
-    console.log("Generate new text from ChatGPT");
-  };
-
-
   const [finalData, setFinalData] = useState("Loading...");
 
-const openai = new OpenAI({ apiKey: 'API-KEY', dangerouslyAllowBrowser: true });
+const openai = new OpenAI({ apiKey: 'APIKEY', dangerouslyAllowBrowser: true });
 
 async function main() {
   const completion = await openai.chat.completions.create({
@@ -62,7 +55,7 @@ useEffect(() => {
         </button>
         <button 
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={main}>
-            Change Text
+            Regenerate Text
         </button>
     </div>
   );
