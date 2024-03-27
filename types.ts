@@ -1,5 +1,3 @@
-import { templateChecker } from "./utils/client/checkers";
-
 const API_ROUTES = {
   open_ai: ["healthcheck", "generate_sentence"],
   healthcheck: [],

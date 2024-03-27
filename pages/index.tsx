@@ -7,7 +7,7 @@ import ScrapbookPanel from "@/components/ScrapbookPanel";
 import RichTextEditor from "@/components/RichTextEditor";
 import { spaceGrotesk, spaceMono } from "@/fonts";
 import classNames from "classnames";
-import TemplateSection from "@/components/TemplateSection";
+import HTMLTemplateSection from "@/components/TemplateSection";
 import React, { useState } from "react";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
             <ToneCheckboxGroup />
           </div>
           <div className="block py-2">
-            <TemplateSection />
+            <HTMLTemplateSection />
           </div>
         </div>
         <hr></hr>
