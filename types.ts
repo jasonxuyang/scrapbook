@@ -1,3 +1,5 @@
+import { templateChecker } from "./utils/client/checkers";
+
 const API_ROUTES = {
   open_ai: ["healthcheck", "generate_sentence"],
   healthcheck: [],
@@ -94,3 +96,15 @@ export type SectionParams = {
   keywords: string[];
   keySentences: string[];
 };
+
+export type Evaluation = DocumentEvaluation;
+
+export type SectionCheckParams = {
+  sectionTitle: string;
+  sectionDone: Boolean;
+};
+
+export type DocumentEvaluation = {
+  type: "evaluation";
+  content: SectionCheckParams[];
+}
